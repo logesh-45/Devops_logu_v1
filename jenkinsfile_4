@@ -1,0 +1,21 @@
+pipeline {
+    agent any
+
+    stages {
+        stage ('q'){
+            steps {
+                sh 'env | sort'
+            }
+        }
+        stage('Hello') {
+            when {
+                expression {
+                    return evenOdd()
+                }
+            }
+            steps {
+                echo 'expression true'
+            }
+        }
+    }
+}
